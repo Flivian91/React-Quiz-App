@@ -1,6 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { QuestionsDispatchContext, StateContext } from "./QuestionProvider";
 
-function Timer({ dispatch, secondsRemaining }) {
+function Timer() {
+  const { secondsRemaining } = useContext(StateContext);
+  const dispatch = useContext(QuestionsDispatchContext);
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
   useEffect(
@@ -8,7 +11,7 @@ function Timer({ dispatch, secondsRemaining }) {
       const id = setInterval(() => {
         dispatch({ type: "tick" });
       }, 1000);
-      return ()=> clearInterval(id);
+      return () => clearInterval(id);
     },
     [dispatch]
   );

@@ -1,7 +1,9 @@
-import React from "react";
-function FinishedScreen({ points, maxPossiblePoints, highscore, dispatch }) {
+import React, { useContext } from "react";
+import { QuestionsDispatchContext, StateContext } from "./QuestionProvider";
+function FinishedScreen({ maxPossiblePoints }) {
+  const { points, highscore } = useContext(StateContext);
+  const dispatch = useContext(QuestionsDispatchContext);
   const percentage = (points / maxPossiblePoints) * 100;
-
   return (
     <>
       <p className="result">
@@ -9,7 +11,12 @@ function FinishedScreen({ points, maxPossiblePoints, highscore, dispatch }) {
         {Math.ceil(percentage)}%)
       </p>
       <p className="highscore">(Highscore: {highscore} points)</p>
-      <button onClick={()=> dispatch({type: "restart"})} className="btn btn-ui">Restart Quiz</button>
+      <button
+        onClick={() => dispatch({ type: "restart" })}
+        className="btn btn-ui"
+      >
+        Restart Quiz
+      </button>
     </>
   );
 }

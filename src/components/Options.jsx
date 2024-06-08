@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { QuestionsDispatchContext, StateContext } from "./QuestionProvider";
 
-function Options({ question, answer, dispatch }) {
+function Options({ question }) {
+  const dispatch = useContext(QuestionsDispatchContext);
+  const { answer} = useContext(StateContext);
+
   const hasAnswered = answer !== null;
   return (
     <div className="options">

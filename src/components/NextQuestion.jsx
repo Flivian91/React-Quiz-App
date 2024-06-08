@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { QuestionsDispatchContext, StateContext } from "./QuestionProvider";
 
-function NextQuestion({ dispatch, answer, numQuestions, index }) {
+function NextQuestion({ numQuestions }) {
+  const { index, answer } = useContext(StateContext);
+  const dispatch = useContext(QuestionsDispatchContext);
   if (answer === null) return null;
-  if(index < numQuestions -1 ){
+  if (index < numQuestions - 1) {
     return (
       <button
         className="btn btn-ui"
@@ -12,7 +15,7 @@ function NextQuestion({ dispatch, answer, numQuestions, index }) {
       </button>
     );
   }
-  if(index === numQuestions -1 ){
+  if (index === numQuestions - 1) {
     return (
       <button
         className="btn btn-ui"

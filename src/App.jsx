@@ -12,6 +12,10 @@ import Progress from "./components/Progress";
 import FinishedScreen from "./components/FinishedScreen";
 import Footer from "./components/Footer";
 import Timer from "./components/Timer";
+import {
+  QuestionsDispatchContext,
+  StateContext,
+} from "./components/QuestionProvider";
 const SEC_PER_QUIZ = 30;
 const initialState = {
   questions: [],
@@ -104,8 +108,7 @@ function reducer(state, action) {
   }
 }
 function App() {
-  const [
-    {
+  /**{
       questions,
       status,
       index,
@@ -115,68 +118,49 @@ function App() {
       secondsRemaining,
       priority,
       userQuiz,
-    },
-    dispatch,
-  ] = useReducer(reducer, initialState);
+    } */
+  const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(function () {
     fetch("http://localhost:5000/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
-  console.log(questions);
-  const numQuestions = questions.length;
-  const maxPossiblePoints = questions.reduce((cur, acc) => cur + acc.points, 0);
+  const numQuestions = state.questions.length;
+  const maxPossiblePoints = state.questions.reduce(
+    (cur, acc) => cur + acc.points,
+    0
+  );
   return (
-    <div>
-      <Header />
-      <Main>
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
-        {status === "ready" && (
-          <StartScreen
-            dispatch={dispatch}
-            numQuestions={numQuestions}
-            priority={priority}
-            userQuiz={userQuiz}
-          />
-        )}
-        {status === "active" && (
-          <>
-            <Progress
-              answer={answer}
-              points={points}
-              numQuestions={numQuestions}
-              index={index}
-              maxPossiblePoints={maxPossiblePoints}
-            />
-            <Question
-              answer={answer}
-              dispatch={dispatch}
-              question={questions[index]}
-            />
-            <Footer>
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
-
-              <NextQuestion
-                index={index}
-                numQuestions={numQuestions}
-                dispatch={dispatch}
-                answer={answer}
+    <StateContext.Provider value={state}>
+      <QuestionsDispatchContext.Provider value={dispatch}>
+        <div>
+          <Header />
+          <Main>
+            {state.status === "loading" && <Loader />}
+            {state.status === "error" && <Error />}
+            {state.status === "ready" && (
+              <StartScreen numQuestions={numQuestions} />
+            )}
+            {state.status === "active" && (
+              <>
+                <Progress maxPossiblePoints={maxPossiblePoints} />
+                <Question />
+                <Footer>
+                  <Timer />
+                  <NextQuestion numQuestions={numQuestions} />
+                </Footer>
+              </>
+            )}
+            {state.status === "finished" && (
+              <FinishedScreen
+                maxPossiblePoints={maxPossiblePoints}
               />
-            </Footer>
-          </>
-        )}
-        {status === "finished" && (
-          <FinishedScreen
-            points={points}
-            maxPossiblePoints={maxPossiblePoints}
-            highscore={highscore}
-            dispatch={dispatch}
-          />
-        )}
-      </Main>
-    </div>
+            )}
+          </Main>
+        </div>
+      </QuestionsDispatchContext.Provider>
+    </StateContext.Provider>
   );
 }
 
