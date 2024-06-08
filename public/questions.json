@@ -2,27 +2,55 @@
   "questions": [
     {
       "question": "Which is the most popular JavaScript framework?",
-      "options": ["Angular", "React", "Svelte", "Vue"],
+      "options": [
+        "Angular",
+        "React",
+        "Svelte",
+        "Vue"
+      ],
       "correctOption": 1,
-      "points": 10
+      "points": 10,
+      "priority": "low",
+      "id": "826d"
     },
     {
       "question": "Which company invented React?",
-      "options": ["Google", "Apple", "Netflix", "Facebook"],
+      "options": [
+        "Google",
+        "Apple",
+        "Netflix",
+        "Facebook"
+      ],
       "correctOption": 3,
-      "points": 10
+      "points": 10,
+      "priority": "low",
+      "id": "c1dc"
     },
     {
       "question": "What's the fundamental building block of React apps?",
-      "options": ["Components", "Blocks", "Elements", "Effects"],
+      "options": [
+        "Components",
+        "Blocks",
+        "Elements",
+        "Effects"
+      ],
       "correctOption": 0,
-      "points": 10
+      "points": 10,
+      "priority": "low",
+      "id": "cf70"
     },
     {
       "question": "What's the name of the syntax we use to describe the UI in React components?",
-      "options": ["FBJ", "Babel", "JSX", "ES2015"],
+      "options": [
+        "FBJ",
+        "Babel",
+        "JSX",
+        "ES2015"
+      ],
       "correctOption": 2,
-      "points": 10
+      "points": 10,
+      "priority": "low",
+      "id": "12c9"
     },
     {
       "question": "How does data flow naturally in React apps?",
@@ -33,13 +61,22 @@
         "The developers decides"
       ],
       "correctOption": 0,
-      "points": 10
+      "points": 10,
+      "priority": "low",
+      "id": "b967"
     },
     {
       "question": "How to pass data into a child component?",
-      "options": ["State", "Props", "PropTypes", "Parameters"],
+      "options": [
+        "State",
+        "Props",
+        "PropTypes",
+        "Parameters"
+      ],
       "correctOption": 1,
-      "points": 10
+      "points": 10,
+      "priority": "low",
+      "id": "e23c"
     },
     {
       "question": "When to use derived state?",
@@ -50,7 +87,9 @@
         "Whenever the state can be computed from another state variable"
       ],
       "correctOption": 3,
-      "points": 30
+      "points": 30,
+      "priority": "high",
+      "id": "49fb"
     },
     {
       "question": "What triggers a UI re-render in React?",
@@ -61,7 +100,9 @@
         "Adding event listeners to DOM elements"
       ],
       "correctOption": 2,
-      "points": 20
+      "points": 20,
+      "priority": "medium",
+      "id": "4f28"
     },
     {
       "question": "When do we directly \"touch\" the DOM in React?",
@@ -72,7 +113,9 @@
         "Almost never"
       ],
       "correctOption": 3,
-      "points": 20
+      "points": 20,
+      "priority": "medium",
+      "id": "9a19"
     },
     {
       "question": "In what situation do we use a callback to update state?",
@@ -83,7 +126,9 @@
         "When the new state depends on the previous state"
       ],
       "correctOption": 3,
-      "points": 30
+      "points": 30,
+      "priority": "high",
+      "id": "49be"
     },
     {
       "question": "If we pass a function to useState, when will that function be called?",
@@ -94,13 +139,22 @@
         "The first time we update the state"
       ],
       "correctOption": 2,
-      "points": 30
+      "points": 30,
+      "priority": "high",
+      "id": "aa72"
     },
     {
       "question": "Which hook to use for an API request on the component's initial render?",
-      "options": ["useState", "useEffect", "useRef", "useReducer"],
+      "options": [
+        "useState",
+        "useEffect",
+        "useRef",
+        "useReducer"
+      ],
       "correctOption": 1,
-      "points": 10
+      "points": 10,
+      "priority": "low",
+      "id": "7d0a"
     },
     {
       "question": "Which variables should go into the useEffect dependency array?",
@@ -111,7 +165,9 @@
         "All variables needed for clean up"
       ],
       "correctOption": 2,
-      "points": 30
+      "points": 30,
+      "priority": "high",
+      "id": "0769"
     },
     {
       "question": "An effect will always run on the initial render.",
@@ -122,7 +178,9 @@
         "In depends on the code in the effect"
       ],
       "correctOption": 0,
-      "points": 30
+      "points": 30,
+      "priority": "high",
+      "id": "cf9a"
     },
     {
       "question": "When will an effect run if it doesn't have a dependency array?",
@@ -133,7 +191,334 @@
         "Each time the component is re-rendered"
       ],
       "correctOption": 3,
-      "points": 20
+      "points": 20,
+      "priority": "medium",
+      "id": "3f9c"
+    },
+    {
+      "question": "When will an effect run if it doesn't have a dependency array?",
+      "options": [
+        "Only when the component mounts",
+        "Only when the component unmounts",
+        "The first time the component re-renders",
+        "Each time the component is re-rendered"
+      ],
+      "correctOption": 3,
+      "points": 20,
+      "priority": "medium",
+      "id": "6c36"
+    },
+    {
+      "question": "What is the default behavior of setState in React?",
+      "options": [
+        "It merges the new state with the old state",
+        "It replaces the old state with the new state",
+        "It does nothing",
+        "It throws an error"
+      ],
+      "correctOption": 0,
+      "points": 20,
+      "priority": "medium",
+      "id": "7c37"
+    },
+    {
+      "question": "How do you import the useState hook?",
+      "options": [
+        "import useState from 'react'",
+        "import { useState } from 'react'",
+        "import useState from 'react/hooks'",
+        "import { useState } from 'react/hooks'"
+      ],
+      "correctOption": 1,
+      "points": 10,
+      "priority": "low",
+      "id": "8c38"
+    },
+    {
+      "question": "What will be the output of this code? console.log(typeof useEffect)",
+      "options": [
+        "'function'",
+        "'object'",
+        "'undefined'",
+        "'string'"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "priority": "low",
+      "id": "9c39"
+    },
+    {
+      "question": "Which hook is used to handle side effects in functional components?",
+      "options": [
+        "useState",
+        "useEffect",
+        "useContext",
+        "useReducer"
+      ],
+      "correctOption": 1,
+      "points": 10,
+      "priority": "low",
+      "id": "10c40"
+    },
+    {
+      "question": "What is the purpose of useRef hook?",
+      "options": [
+        "To store a mutable value",
+        "To trigger re-renders",
+        "To create a state variable",
+        "To manage side effects"
+      ],
+      "correctOption": 0,
+      "points": 20,
+      "priority": "medium",
+      "id": "11c41"
+    },
+    {
+      "question": "How do you provide a context value to a subtree of components?",
+      "options": [
+        "Using Context.Provider",
+        "Using Context.Consumer",
+        "Using useContext",
+        "Using contextType"
+      ],
+      "correctOption": 0,
+      "points": 20,
+      "priority": "medium",
+      "id": "12c42"
+    },
+    {
+      "question": "What will happen if you call setState inside render method?",
+      "options": [
+        "It will cause an infinite loop",
+        "It will update the state",
+        "It will throw an error",
+        "It will do nothing"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "priority": "high",
+      "id": "13c43"
+    },
+    {
+      "question": "Which method is used to update state in a class component?",
+      "options": [
+        "this.setState",
+        "this.updateState",
+        "this.changeState",
+        "this.setStateValue"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "priority": "low",
+      "id": "14c44"
+    },
+    {
+      "question": "What is the purpose of the key prop in a list of elements?",
+      "options": [
+        "To uniquely identify elements",
+        "To style elements",
+        "To trigger re-renders",
+        "To handle events"
+      ],
+      "correctOption": 0,
+      "points": 20,
+      "priority": "medium",
+      "id": "15c45"
+    },
+    {
+      "question": "How do you pass props to a component?",
+      "options": [
+        "Using attributes in the JSX tag",
+        "Using the context API",
+        "Using the state",
+        "Using setState"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "priority": "low",
+      "id": "16c46"
+    },
+    {
+      "question": "What will be the result of this code? const [count, setCount] = useState(0); setCount(count + 1); setCount(count + 1);",
+      "options": [
+        "The count will be 1",
+        "The count will be 2",
+        "The count will be 3",
+        "The count will be 0"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "priority": "high",
+      "id": "17c47"
+    },
+    {
+      "question": "How can you optimize a React application for performance?",
+      "options": [
+        "Using useMemo and useCallback",
+        "Using useEffect",
+        "Using useState",
+        "Using useRef"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "priority": "high",
+      "id": "18c48"
+    },
+    {
+      "question": "Which lifecycle method is called when a component is removed from the DOM?",
+      "options": [
+        "componentDidMount",
+        "componentDidUpdate",
+        "componentWillUnmount",
+        "render"
+      ],
+      "correctOption": 2,
+      "points": 20,
+      "priority": "medium",
+      "id": "19c49"
+    },
+    {
+      "question": "How do you handle errors in a React component tree?",
+      "options": [
+        "Using Error Boundaries",
+        "Using try-catch in render method",
+        "Using componentDidCatch",
+        "Using componentWillMount"
+      ],
+      "correctOption": 0,
+      "points": 20,
+      "priority": "medium",
+      "id": "20c50"
+    },
+    {
+      "question": "What does useReducer hook return?",
+      "options": [
+        "A state and a dispatch function",
+        "A state and a setState function",
+        "A state and a reducer function",
+        "A state and a context"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "priority": "high",
+      "id": "21c51"
+    },
+    {
+      "question": "Which hook would you use to memoize a value?",
+      "options": [
+        "useMemo",
+        "useCallback",
+        "useState",
+        "useEffect"
+      ],
+      "correctOption": 0,
+      "points": 20,
+      "priority": "medium",
+      "id": "22c52"
+    },
+    {
+      "question": "How do you create a context in React?",
+      "options": [
+        "Using React.createContext",
+        "Using React.createContextAPI",
+        "Using React.create",
+        "Using React.useContext"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "priority": "low",
+      "id": "23c53"
+    },
+    {
+      "question": "What is a PureComponent in React?",
+      "options": [
+        "A component that only re-renders if its props or state change",
+        "A component that never re-renders",
+        "A component that always re-renders",
+        "A component that doesn't have state"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "priority": "high",
+      "id": "24c54"
+    },
+    {
+      "question": "How do you handle forms in React?",
+      "options": [
+        "Using controlled components",
+        "Using uncontrolled components",
+        "Using refs",
+        "All of the above"
+      ],
+      "correctOption": 3,
+      "points": 20,
+      "priority": "medium",
+      "id": "25c55"
+    },
+    {
+      "question": "What is JSX?",
+      "options": [
+        "A syntax extension for JavaScript",
+        "A template language",
+        "A type of CSS",
+        "A JavaScript framework"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "priority": "low",
+      "id": "26c56"
+    },
+    {
+      "question": "What is the purpose of the useEffect hook?",
+      "options": [
+        "To perform side effects",
+        "To manage state",
+        "To handle user input",
+        "To create context"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "priority": "low",
+      "id": "27c57"
+    },
+    {
+      "question": "How do you access props in a functional component?",
+      "options": [
+        "By passing them as an argument",
+        "By using this.props",
+        "By using this.state",
+        "By using useState"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "priority": "low",
+      "id": "28c58"
+    },
+    {
+      "question": "What will be the output of this code? const [name, setName] = useState('Alice'); useEffect(() => { setName('Bob'); }, []);",
+      "options": [
+        "'Alice'",
+        "'Bob'",
+        "An error",
+        "undefined"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "priority": "medium",
+      "id": "29c59"
+    },
+    {
+      "question": "What is the difference between useEffect and useLayoutEffect?",
+      "options": [
+        "useLayoutEffect runs synchronously after a render",
+        "useEffect runs before rendering",
+        "useEffect is used only for server-side rendering",
+        "useLayoutEffect is a deprecated hook"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "priority": "high",
+      "id": "30c60"
     }
-  ]
+  ]  
 }

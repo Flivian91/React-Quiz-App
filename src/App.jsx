@@ -12,7 +12,7 @@ import Progress from "./components/Progress";
 import FinishedScreen from "./components/FinishedScreen";
 import Footer from "./components/Footer";
 import Timer from "./components/Timer";
-const SEC_PER_QUIZ = 1;
+const SEC_PER_QUIZ = 30;
 const initialState = {
   questions: [],
   // "Loading", "error", "ready", "active", "finished"
@@ -22,13 +22,15 @@ const initialState = {
   points: 0,
   highscore: 0,
   secondsRemaining: null,
+  priority: "high",
+  userQuiz: 40,
 };
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived": {
       return {
         ...state,
-        questions: action.payload,
+        questions: action.payload.slice(0, state.userQuiz),
         status: "ready",
       };
     }
@@ -85,13 +87,35 @@ function reducer(state, action) {
         status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
     }
+    case "priority": {
+      return {
+        ...state,
+        priority: action.payload,
+      };
+    }
+    case "userQuestions": {
+      return {
+        ...state,
+        userQuiz: action.payload,
+      };
+    }
     default:
       throw Error("Action is Unkown");
   }
 }
 function App() {
   const [
-    { questions, status, index, answer, points, highscore, secondsRemaining },
+    {
+      questions,
+      status,
+      index,
+      answer,
+      points,
+      highscore,
+      secondsRemaining,
+      priority,
+      userQuiz,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
   useEffect(function () {
@@ -100,6 +124,7 @@ function App() {
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
+  console.log(questions);
   const numQuestions = questions.length;
   const maxPossiblePoints = questions.reduce((cur, acc) => cur + acc.points, 0);
   return (
@@ -109,7 +134,12 @@ function App() {
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
         {status === "ready" && (
-          <StartScreen dispatch={dispatch} numQuestions={numQuestions} />
+          <StartScreen
+            dispatch={dispatch}
+            numQuestions={numQuestions}
+            priority={priority}
+            userQuiz={userQuiz}
+          />
         )}
         {status === "active" && (
           <>
